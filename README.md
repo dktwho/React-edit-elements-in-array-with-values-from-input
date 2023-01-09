@@ -1,3 +1,7 @@
+# Содержание
+
+1. Редактирование элемента массива, изменение элемента на значения указанные в инпуте, по нажатию на кнопку.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

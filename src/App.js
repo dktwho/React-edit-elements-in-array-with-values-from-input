@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [notes, setNotes] = useState(['a','b','c'])
+  const [editNum, setEditNum] = useState(null)
+
+  const result = notes.map((note, index) => {
+    return <p key={index}>{note} <button onClick={() => setEditNum(index)}>change</button></p>
+  })
+
+  function changeHandler(e) {
+    setNotes([...notes.slice(0, editNum), e.target.value, ...notes.slice(editNum + 1)])
+  }
+
+  function clearInput() {
+    setEditNum('')
+  }
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>{result}</ul>
+      <input value={editNum ? notes[editNum] : ''}  onChange={changeHandler} onBlur={clearInput} />
+
     </div>
   );
 }
